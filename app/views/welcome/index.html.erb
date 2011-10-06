@@ -11,13 +11,12 @@
     <% @stages.each do |stage| %>
       <%= div_for stage, :class => "span", :style => "width:#{width}px;" do %>
         <h3><%= stage.name %></h3>
-        <ul>
           <% stage.stories.each do |story| %>
-            <li>
-              <%= link_to story.name, edit_story_path(story) %>
-            </li>
+            <div class="well">
+              <div><%= link_to story.name, edit_story_path(story) %></div>
+              <span class="label"><%= story.project.name %></span>
+            </div>
           <% end %>
-        </ul>
       <% end %>
     <% end %>
   </div>
