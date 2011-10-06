@@ -1,0 +1,24 @@
+<% if @stages.blank? %>
+  <div class="hero-unit">
+    <h1>Hello, world!</h1>
+    <p>AgileBoard will help you organize your agile team. Start by creating some stages.</p>
+    <p><%= link_to "Get started", new_stage_path, :class => "btn primary large" %></p>
+  </div>
+<% else %>
+  <% width = 960 / @stages.length - 20 %>
+
+  <div class="row">
+    <% @stages.each do |stage| %>
+      <%= div_for stage, :class => "span", :style => "width:#{width}px;" do %>
+        <h3><%= stage.name %></h3>
+        <ul>
+          <% stage.stories.each do |story| %>
+            <li>
+              <%= link_to story.name, edit_story_path(story) %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

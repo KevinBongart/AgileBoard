@@ -2,13 +2,33 @@
 <html>
 <head>
   <title>AgileBoard</title>
-  <%= stylesheet_link_tag :all %>
+  <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.3.0/bootstrap.min.css">
+  <%= stylesheet_link_tag 'style' %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
 </head>
 <body>
 
-<%= yield %>
+  <div class="topbar">
+    <div class="fill">
+      <div class="container">
+        <%= link_to "AgileBoard", root_path, :class => "brand" %>
+        <ul class="nav">
+          <li class="<%= 'active' if current_page?(root_path) %>"><%= link_to "Home", root_path %></li>
+          <li class="<%= 'active' if current_page?(:controller => :stages) %>"><%= link_to "Stages", stages_path %></li>
+          <li class="<%= 'active' if current_page?(:controller => :projects) %>"><%= link_to "Projects", projects_path %></li>
+          <li class="<%= 'active' if current_page?(:controller => :stories) %>"><%= link_to "Stories", stories_path %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
+  <div class="container">
+    <%= yield %>
+
+    <footer>
+      <p>Made with love, coffee and Rails.</p>
+    </footer>
+  </div>
 </body>
 </html>
