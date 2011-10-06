@@ -28,8 +28,6 @@ GEM
       activemodel (= 3.0.6)
       activesupport (= 3.0.6)
     activesupport (3.0.6)
-    acts_as_list (0.2.0)
-      activerecord (>= 1.15.4.7794)
     addressable (2.2.6)
     arel (2.0.10)
     builder (2.1.2)
@@ -85,7 +83,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  acts_as_list
   heroku
   pg
   rails (= 3.0.6)
