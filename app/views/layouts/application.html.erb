@@ -15,9 +15,9 @@
         <%= link_to "AgileBoard", root_path, :class => "brand" %>
         <ul class="nav">
           <li class="<%= 'active' if current_page?(root_path) %>"><%= link_to "Home", root_path %></li>
-          <li class="<%= 'active' if current_page?(:controller => :stages) %>"><%= link_to "Stages", stages_path %></li>
-          <li class="<%= 'active' if current_page?(:controller => :projects) %>"><%= link_to "Projects", projects_path %></li>
-          <li class="<%= 'active' if current_page?(:controller => :stories) %>"><%= link_to "Stories", stories_path %></li>
+          <li class="<%= 'active' if controller.controller_name == 'stages' %>"><%= link_to "Stages", stages_path %></li>
+          <li class="<%= 'active' if controller.controller_name == 'projects' %>"><%= link_to "Projects", projects_path %></li>
+          <li class="<%= 'active' if controller.controller_name == 'stories' %>"><%= link_to "Stories", stories_path %></li>
         </ul>
       </div>
     </div>
