@@ -1,15 +1,17 @@
-<p id="notice"><%= notice %></p>
+<% width = 960 / @stages.length - 20 %>
 
-<p>
-  <b>Name:</b>
-  <%= @project.name %>
-</p>
-
-<p>
-  <b>Color:</b>
-  <%= @project.color %>
-</p>
-
-
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<div class="row">
+  <% @stages.each do |stage| %>
+    <%= div_for stage, :class => "span4" do %>
+      <h3><%= stage.name %></h3>
+        <% stage.stories.where(:project_id => @project).each do |story| %>
+          <div class="well">
+            <div><%= link_to story.name, story %></div>
+            <% story.labels.each do |label| %>
+              <span class="label"><%= label.name %></span>
+            <% end %>
+          </div>
+        <% end %>
+    <% end %>
+  <% end %>
+</div>

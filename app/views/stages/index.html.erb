@@ -12,7 +12,7 @@
 <% @stages.each do |stage| %>
   <tr>
     <td><%= stage.name %></td>
-    <td><%= stage.postition %></td>
+    <td><%= stage.position %></td>
     <td><%= link_to 'Show', stage %></td>
     <td><%= link_to 'Edit', edit_stage_path(stage) %></td>
     <td><%= link_to 'Destroy', stage, :confirm => 'Are you sure?', :method => :delete %></td>

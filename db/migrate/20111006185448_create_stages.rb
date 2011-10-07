@@ -2,7 +2,7 @@ class CreateStages < ActiveRecord::Migration
   def self.up
     create_table :stages do |t|
       t.string :name
-      t.integer :postition
+      t.integer :position
 
       t.timestamps
     end

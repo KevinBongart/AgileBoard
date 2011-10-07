@@ -7,3 +7,7 @@ body {
   line-height: 18px;
   margin-bottom: 18px;
 }
+
+.btn.large {
+  width: 220px;
+}

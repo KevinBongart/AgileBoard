@@ -13,6 +13,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.xml
   def show
+    @stages  = Stage.all
     @project = Project.find(params[:id])
 
     respond_to do |format|

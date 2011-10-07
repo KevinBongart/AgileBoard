@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
+
+Stage.create(:name => "Sprint", :position => 1)
+Stage.create(:name => "Development", :position => 2)
+Stage.create(:name => "QA", :position => 3)
+Stage.create(:name => "Done", :position => 4)

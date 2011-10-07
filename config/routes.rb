@@ -1,9 +1,9 @@
-AgileBoard::Application.routes.draw do
-  resources :stages
+Pivotalboard::Application.routes.draw do
+  resources :boards, :except => ['edit', 'show', 'update', 'destroy']
+  resources :projects, :only => ['index', 'show']
+  resources :stories, :only => 'show'
 
-  resources :stories
-
-  resources :projects
+  match 'refresh' => 'boards#refresh'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -54,7 +54,7 @@ AgileBoard::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => "welcome#index"
+  root :to => "boards#index"
 
   # See how all your routes lay out with "rake routes"
 

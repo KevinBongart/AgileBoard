@@ -2,8 +2,6 @@
 
 one:
   name: MyString
-  position: 1
 
 two:
   name: MyString
-  position: 1

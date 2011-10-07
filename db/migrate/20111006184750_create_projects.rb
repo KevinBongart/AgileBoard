@@ -1,8 +1,8 @@
 class CreateProjects < ActiveRecord::Migration
   def self.up
     create_table :projects do |t|
-      t.string :name
-      t.string :color
+      t.string  :name
+      t.integer :pivotal_id
 
       t.timestamps
     end

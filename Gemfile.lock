@@ -33,6 +33,8 @@ GEM
     builder (2.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
+    happymapper (0.4.0)
+      libxml-ruby (~> 2.0)
     heroku (2.8.5)
       launchy (>= 0.3.2)
       rest-client (~> 1.6.1)
@@ -41,13 +43,24 @@ GEM
     i18n (0.5.0)
     launchy (2.0.5)
       addressable (~> 2.2.6)
+    libxml-ruby (2.2.2)
     mail (2.2.19)
       activesupport (>= 2.3.6)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.16)
+    nokogiri (1.5.0)
     pg (0.11.0)
+    pivotal-tracker (0.4.1)
+      builder
+      builder
+      happymapper (>= 0.3.2)
+      happymapper (>= 0.3.2)
+      nokogiri (>= 1.4.3)
+      nokogiri (~> 1.4)
+      rest-client (~> 1.6.0)
+      rest-client (~> 1.6.0)
     polyglot (0.3.2)
     rack (1.2.4)
     rack-mount (0.6.14)
@@ -85,5 +98,6 @@ PLATFORMS
 DEPENDENCIES
   heroku
   pg
+  pivotal-tracker
   rails (= 3.0.6)
   sqlite3

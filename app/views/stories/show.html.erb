@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <b>Name:</b>
   <%= @story.name %>
@@ -12,14 +10,10 @@
 
 <p>
   <b>Project:</b>
-  <%= @story.project_id %>
+  <%= @story.project.name %>
 </p>
 
 <p>
   <b>Stage:</b>
-  <%= @story.stage_id %>
+  <%= @story.stage.name %>
 </p>
-
-
-<%= link_to 'Edit', edit_story_path(@story) %> |
-<%= link_to 'Back', stories_path %>
