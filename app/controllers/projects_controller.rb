@@ -16,6 +16,20 @@ class ProjectsController < ApplicationController
     @stages  = Stage.all
     @project = Project.find(params[:id])
 
+    # Compute points burnt down during the week
+    date = Time.zone.now.beginning_of_week + 10.5.hours
+    @burndown = []
+    total = @project.stories.sum 'points'
+    @burndown << total
+
+    5.times do
+      @project.stories.where(:stage_id => @stages.last).where("accepted_at > ? and accepted_at < ?", date, date + 1.day).each do |story|
+        total -= story.points || 0
+      end
+      @burndown << total
+      date += 1.day
+    end
+
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @project }

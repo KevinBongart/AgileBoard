@@ -1,19 +1,14 @@
-<p>
-  <b>Name:</b>
-  <%= @story.name %>
-</p>
+<h1><%= @story.name %></h1>
+
+<% unless @story.description.blank? %>
+  <div class="well">
+    <%= simple_format auto_link @story.description %>
+  </div>
+<% end %>
 
 <p>
-  <b>Description:</b>
-  <%= @story.description %>
-</p>
-
-<p>
-  <b>Project:</b>
-  <%= @story.project.name %>
-</p>
-
-<p>
-  <b>Stage:</b>
-  <%= @story.stage.name %>
+  <span class="label notice"><%= @story.stage.name %></span>
+  <% @story.labels.each do |label| %>
+    <span class="label"><%= label.name %></span>
+  <% end %>
 </p>

@@ -5,6 +5,7 @@ class Project < ActiveRecord::Base
   after_create :import_stories
 
   def import_stories
+    self.stories.each { |story| story.destroy }
     project = PivotalTracker::Project.find(pivotal_id)
 
     stage = Stage.find_by_name('Sprint')

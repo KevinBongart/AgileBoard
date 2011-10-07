@@ -1,4 +1,7 @@
-<% width = 960 / @stages.length - 20 %>
+<%= javascript_include_tag 'raphael', 'g.raphael', 'g.line' %>
+
+<div class="well" id="holder" style="height:260px;">
+</div>
 
 <div class="row">
   <% @stages.each do |stage| %>
@@ -15,3 +18,20 @@
     <% end %>
   <% end %>
 </div>
+
+<script type="text/javascript" charset="utf-8">
+  window.onload = function () {
+    var r = Raphael("holder");
+    var x = [0, 1, 2, 3, 4, 5];
+    var y = [];
+    var z = [0, 0, 0, 0, 0, 0];
+
+    <% @burndown.each_with_index do |points, i| %>
+      y.push(<%= points %>);
+    <% end %>
+
+    r.g.linechart(0, 0, 900, 260, x, z, {"colors":["rgba(0, 0, 0, 0.05)"]});
+    r.g.linechart(0, 0, 900, 260, z, x, {"colors":["rgba(0, 0, 0, 0.05)"]});
+    r.g.linechart(0, 0, 900, 260, x, y, {"colors":["#0069D6"]});
+  };
+</script>

@@ -28,7 +28,9 @@ class Story < ActiveRecord::Base
         :description => pivotal_tracker_story.description,
         :project => project,
         :labels => labels,
-        :stage => stage
+        :stage => stage,
+        :accepted_at => pivotal_tracker_story.accepted_at,
+        :points => pivotal_tracker_story.estimate
       )
     else
       Story.create(
@@ -37,7 +39,9 @@ class Story < ActiveRecord::Base
         :project => project,
         :labels => labels,
         :stage => stage,
-        :pivotal_id => pivotal_tracker_story.id
+        :pivotal_id => pivotal_tracker_story.id,
+        :accepted_at => pivotal_tracker_story.accepted_at,
+        :points => pivotal_tracker_story.estimate
       )
     end
   end
