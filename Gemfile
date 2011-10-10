@@ -2,6 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.0.6'
 gem 'pivotal-tracker'
+gem 'devise'
 
 group :production do
   gem 'heroku'

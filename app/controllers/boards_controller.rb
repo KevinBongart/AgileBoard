@@ -2,10 +2,10 @@ class BoardsController < ApplicationController
   # GET /boards
   # GET /boards.xml
   def index
-    if @board and @board.projects.any?
-      redirect_to @board.projects.first
+    if user_signed_in? && current_user.board && current_user.board.projects.first
+      redirect_to current_user.board.projects.first
     else
-      @board = Board.new
+      redirect_to new_user_registration_path
     end
   end
 

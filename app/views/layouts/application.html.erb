@@ -22,9 +22,10 @@
           </ul>
         <% end %>
 
-        <% if @board.projects.any? %>
+        <% if @board && @board.projects.any? %>
           <ul class="nav secondary-nav">
             <li><%= link_to "Refresh", refresh_path %></li>
+            <li><%= link_to('Sign out', destroy_user_session_path, :method => :delete) %></li>
           </ul>
         <% end %>
       </div>
@@ -32,6 +33,13 @@
   </div>
 
   <div class="container">
+    <% if notice %>
+      <div class="alert-message success"><p><%= notice %></p></div>
+    <% end %>
+    <% if alert %>
+      <div class="alert-message error"><p><%= alert %></p></div>
+    <% end %>
+
     <%= yield %>
 
     <footer>

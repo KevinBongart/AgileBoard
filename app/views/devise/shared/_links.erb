@@ -1,0 +1,17 @@
+<ul class="breadcrumb">
+  <%- if controller_name != 'sessions' %>
+    <li class="active">Already have an account?</li>
+    <li><%= link_to "Sign in", new_session_path(resource_name) %><span class="divider">/</span></li>
+  <% end -%>
+
+  <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+    <li class="active">Don't have an account yet?</li>
+    <li><%= link_to "Sign up", new_registration_path(resource_name) %><span class="divider">/</span></li>
+  <% end -%>
+
+  <%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
+    <li class="active">Forgot your password?</li>
+    <li><%= link_to "No problem", new_password_path(resource_name) %>
+  <% end -%>
+</ul>
+

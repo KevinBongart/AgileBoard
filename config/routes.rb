@@ -1,4 +1,6 @@
 Pivotalboard::Application.routes.draw do
+  devise_for :users
+
   resources :boards, :except => ['edit', 'show', 'update', 'destroy']
   resources :projects, :only => ['index', 'show']
   resources :stories, :only => 'show'

@@ -1,5 +1,6 @@
 class Board < ActiveRecord::Base
-  has_many :projects
+  belongs_to  :user
+  has_many    :projects
 
   after_create :import_projects
 

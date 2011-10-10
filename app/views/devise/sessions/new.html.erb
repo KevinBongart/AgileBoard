@@ -1,0 +1,37 @@
+<div class="hero-unit">
+  <h1>PivotalBoard will display your current sprint in an agile board.</h1>
+  <p>Simply sign in using your PivotalTracker account. (We don't store your password.)</p>
+
+  <br />
+
+  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+    <div class="clearfix">
+      <%= f.label :email %>
+      <div class="input">
+        <%= f.text_field :email %>
+      </div>
+    </div>
+
+    <div class="clearfix">
+      <%= f.label :password %>
+      <div class="input">
+        <%= f.password_field :password %>
+      </div>
+    </div>
+
+    <% if devise_mapping.rememberable? -%>
+      <div class="input clearfix">
+          <%= f.check_box :remember_me %>
+          <span>Remember me</span>
+      </div>
+    <% end -%>
+
+    <div class="actions">
+      <p>
+        <%= f.submit :value => "Get started", :class => "btn primary large" %>
+      </p>
+    </div>
+  <% end %>
+
+  <%= render :partial => "devise/shared/links" %>
+</div>
