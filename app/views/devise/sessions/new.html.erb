@@ -1,10 +1,12 @@
 <div class="hero-unit">
-  <h1>BoardTracker will display your current sprint in an agile board.</h1>
+  <h1>AgileBoard will display your current sprint in an agile board.</h1>
   <p>Simply sign in using your Pivotal Tracker account. (We don't store your password.)</p>
 
   <br />
 
   <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
+
     <div class="clearfix">
       <%= f.label :email %>
       <div class="input">

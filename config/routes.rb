@@ -1,4 +1,4 @@
-Boardtracker::Application.routes.draw do
+Agileboard::Application.routes.draw do
   devise_for :users
 
   resources :boards, :except => ['edit', 'show', 'update', 'destroy']

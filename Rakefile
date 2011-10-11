@@ -4,4 +4,4 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
-Boardtracker::Application.load_tasks
+Agileboard::Application.load_tasks
