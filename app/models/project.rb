@@ -6,6 +6,7 @@ class Project < ActiveRecord::Base
 
   def import_stories
     self.stories.each { |story| story.destroy }
+    PivotalTracker::Client.token = board.token
     project = PivotalTracker::Project.find(pivotal_id)
 
     stage = Stage.find_by_name('Sprint')

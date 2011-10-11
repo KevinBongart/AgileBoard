@@ -9,18 +9,18 @@ class User < ActiveRecord::Base
 
   has_one :board
 
-  after_create :create_board
+  after_create  :create_board
 
 private
 
   def create_board
-    p "(((((((((((((((((((((((((((((((((())))))))))))))))))))))))))))))))))"
-    token = PivotalTracker::Client.token = nil
-    token = PivotalTracker::Client.token(email, password)
-    p email
-    p password
-    p token
+    PivotalTracker::Client.token = nil
+
+    begin
+      token = PivotalTracker::Client.token(email, password)
+    rescue
+    end
+
     Board.create(:token => token, :user => self)
-    p "(((((((((((((((((((((((((((((((((())))))))))))))))))))))))))))))))))"
   end
 end

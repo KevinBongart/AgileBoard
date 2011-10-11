@@ -1,4 +1,4 @@
-Pivotalboard::Application.routes.draw do
+Boardtracker::Application.routes.draw do
   devise_for :users
 
   resources :boards, :except => ['edit', 'show', 'update', 'destroy']

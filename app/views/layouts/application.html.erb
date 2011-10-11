@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>PivotalBoard</title>
+  <title>BoardTracker</title>
   <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.3.0/bootstrap.min.css">
   <%= stylesheet_link_tag 'style' %>
   <%= javascript_include_tag :defaults %>
@@ -12,7 +12,7 @@
   <div class="topbar">
     <div class="fill">
       <div class="container">
-        <%= link_to "PivotalBoard", root_path, :class => "brand" %>
+        <%= link_to "BoardTracker", root_path, :class => "brand" %>
 
         <% if @board %>
           <ul class="nav">
@@ -22,12 +22,14 @@
           </ul>
         <% end %>
 
-        <% if @board && @board.projects.any? %>
-          <ul class="nav secondary-nav">
+        <ul class="nav secondary-nav">
+          <% if @board && @board.projects.any? %>
             <li><%= link_to "Refresh", refresh_path %></li>
+          <% end %>
+          <% if user_signed_in? %>
             <li><%= link_to('Sign out', destroy_user_session_path, :method => :delete) %></li>
-          </ul>
-        <% end %>
+          <% end %>
+        </ul>
       </div>
     </div>
   </div>

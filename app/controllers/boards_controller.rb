@@ -1,11 +1,22 @@
 class BoardsController < ApplicationController
+  before_filter :get_token, :only => :index
+  before_filter :import_projects, :only => :index
+
   # GET /boards
   # GET /boards.xml
   def index
-    if user_signed_in? && current_user.board && current_user.board.projects.first
-      redirect_to current_user.board.projects.first
+    if user_signed_in?
+      if current_user.board.token
+        if current_user.board.projects.any?
+          redirect_to current_user.board.projects.first
+        else
+          render 'no_projects'
+        end
+      else
+        render 'no_token'
+      end
     else
-      redirect_to new_user_registration_path
+      redirect_to new_user_registration_path, :notice => notice, :alert => alert
     end
   end
 
@@ -39,7 +50,7 @@ class BoardsController < ApplicationController
   # POST /boards
   # POST /boards.xml
   def create
-    @board = Board.new(:token => PivotalTracker::Client.token(params[:username], params[:password]))
+    @board = Board.new(:token => token)
 
     respond_to do |format|
       if @board.save
@@ -86,5 +97,21 @@ class BoardsController < ApplicationController
     end
 
     redirect_to @board.projects.first
+  end
+
+private
+
+  def get_token
+    if current_user && !current_user.board.token
+      p "no token!"
+      current_user.board.get_token
+    end
+  end
+
+  def import_projects
+    if current_user && current_user.board.token && current_user.board.projects.blank?
+      p "no projects!"
+      current_user.board.import_projects
+    end
   end
 end
