@@ -7,7 +7,7 @@
 <% end %>
 
 <p class="tags">
-  <span class="label notice"><%= @story.stage.name %></span>
+  <span class="label <%= @story.stage.name == "Done" ? "success" : "notice" %>"><%= @story.stage.name %></span>
   <% @story.labels.each do |label| %>
     <span class="label"><%= label.name %></span>
   <% end %>

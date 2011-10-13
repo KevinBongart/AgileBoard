@@ -9,7 +9,12 @@
       <h3><%= stage.name %></h3>
         <% stage.stories.where(:project_id => @project).each do |story| %>
           <% div_for story, :class => 'well' do %>
-            <div><%= link_to story.name, story %></div>
+            <div>
+              <% unless story.owned_by.blank? %>
+                <%= story.owned_by.split(' ').first %>:
+              <% end %>
+              <%= link_to story.name, story %>
+            </div>
             <% story.labels.each do |label| %>
               <span class="label"><%= label.name %></span>
             <% end %>

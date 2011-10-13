@@ -155,7 +155,8 @@ class Story < ActiveRecord::Base
         :labels => labels,
         :stage => stage,
         :accepted_at => pivotal_tracker_story.accepted_at,
-        :points => pivotal_tracker_story.estimate
+        :points => pivotal_tracker_story.estimate,
+        :owned_by => pivotal_tracker_story.owned_by
       )
     else
       existing_story = Story.create(
@@ -166,7 +167,8 @@ class Story < ActiveRecord::Base
         :stage => stage,
         :pivotal_id => pivotal_tracker_story.id,
         :accepted_at => pivotal_tracker_story.accepted_at,
-        :points => pivotal_tracker_story.estimate
+        :points => pivotal_tracker_story.estimate,
+        :owned_by => pivotal_tracker_story.owned_by
       )
     end
 
