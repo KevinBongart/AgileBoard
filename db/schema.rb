@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111008045836) do
+ActiveRecord::Schema.define(:version => 20111013200933) do
 
   create_table "boards", :force => true do |t|
     t.string   "token"
@@ -55,6 +55,15 @@ ActiveRecord::Schema.define(:version => 20111008045836) do
     t.integer  "pivotal_id"
     t.datetime "accepted_at"
     t.integer  "points"
+  end
+
+  create_table "tasks", :force => true do |t|
+    t.text     "description"
+    t.integer  "position"
+    t.boolean  "complete"
+    t.integer  "story_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|

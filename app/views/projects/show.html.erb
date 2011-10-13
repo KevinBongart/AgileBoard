@@ -5,7 +5,7 @@
 
 <div class="row">
   <% @stages.each do |stage| %>
-    <%= div_for stage, :class => "span4" do %>
+    <% div_for stage, :class => "span4" do %>
       <h3><%= stage.name %></h3>
         <% stage.stories.where(:project_id => @project).each do |story| %>
           <% div_for story, :class => 'well' do %>

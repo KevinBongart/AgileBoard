@@ -16,3 +16,7 @@ body {
   line-height: 0;
   margin-top: 16px;
 }
+
+p.tags {
+  margin-bottom: 18px;
+}

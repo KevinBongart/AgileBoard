@@ -6,9 +6,18 @@
   </div>
 <% end %>
 
-<p>
+<p class="tags">
   <span class="label notice"><%= @story.stage.name %></span>
   <% @story.labels.each do |label| %>
     <span class="label"><%= label.name %></span>
   <% end %>
 </p>
+
+<% @story.tasks.order('position ASC').each do |task| %>
+  <ul class="breadcrumb">
+    <li class="active">
+      <input type="checkbox" <%= "checked" if task.complete %> />
+      <%= task.description %>
+    </li>
+  </ul>
+<% end %>

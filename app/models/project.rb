@@ -6,7 +6,14 @@ class Project < ActiveRecord::Base
 
   def import_stories
     p "importing stories for project #{self.id}"
-    self.stories.each { |story| story.destroy }
+
+    self.stories.each do |story|
+      story.tasks.each do |task|
+        task.destroy
+      end
+      story.destroy
+    end
+
     PivotalTracker::Client.token = board.token
     project = PivotalTracker::Project.find(pivotal_id)
 
