@@ -29,9 +29,9 @@
 <script type="text/javascript" charset="utf-8">
   window.onload = function () {
     var options = {
-      axis:      "0 0 1 1",                   // Where to put the labels (trbl)
-      axisxstep: <%= @burndown.length - 1 %>, // How many x interval labels to render
-      axisystep: <%= @burndown.first %>,      // How many y interval labels to render
+      axis:      "0 0 1 1",               // Where to put the labels (trbl)
+      axisxstep: 6,                       // How many x interval labels to render
+      axisystep: <%= @burndown.first %>,  // How many y interval labels to render
       colors:    ["#0069D6"]
     };
 
