@@ -1,6 +1,6 @@
 <%= javascript_include_tag 'raphael', 'g.raphael', 'g.line' %>
 
-<div class="well" id="holder" style="height:260px;">
+<div class="well" id="holder" style="height:270px;">
 </div>
 
 <div class="row">
@@ -8,12 +8,19 @@
     <%= div_for stage, :class => "span4" do %>
       <h3><%= stage.name %></h3>
         <% stage.stories.where(:project_id => @project).each do |story| %>
-          <div class="well">
+          <% div_for story, :class => 'well' do %>
             <div><%= link_to story.name, story %></div>
             <% story.labels.each do |label| %>
               <span class="label"><%= label.name %></span>
             <% end %>
-          </div>
+            <% if story.points && story.points > 0 %>
+              <div class="points">
+                <% story.points.times do %>
+                  •
+                <% end %>
+              </div>
+            <% end %>
+          <% end %>
         <% end %>
     <% end %>
   <% end %>
@@ -21,17 +28,28 @@
 
 <script type="text/javascript" charset="utf-8">
   window.onload = function () {
+    var options = {
+      axis:      "0 0 1 1",                   // Where to put the labels (trbl)
+      axisxstep: <%= @burndown.length - 1 %>, // How many x interval labels to render
+      axisystep: <%= @burndown.first %>,      // How many y interval labels to render
+      colors:    ["#0069D6"]
+    };
+
     var r = Raphael("holder");
-    var x = [0, 1, 2, 3, 4, 5];
+    var x = [0, 1, 2, 3, 4, 5, 6];
     var y = [];
-    var z = [0, 0, 0, 0, 0, 0];
+    var z = [0, 0, 0, 0, 0, 0, 0];
 
     <% @burndown.each_with_index do |points, i| %>
       y.push(<%= points %>);
     <% end %>
 
-    r.g.linechart(0, 0, 900, 260, x, z, {"colors":["rgba(0, 0, 0, 0.05)"]});
-    r.g.linechart(0, 0, 900, 260, z, x, {"colors":["rgba(0, 0, 0, 0.05)"]});
-    r.g.linechart(0, 0, 900, 260, x, y, {"colors":["#0069D6"]});
+    var chart = r.g.linechart(10, 0, 880, 260, x, [y, z], options);
+
+    var xText = chart.axis[0].text.items;
+    var days = ['', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+    for (var i = 0; i < xText.size(); i++) {
+      xText[i].attr({'text': (days[i] ? days[i] : '')});
+    };
   };
 </script>

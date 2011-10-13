@@ -22,7 +22,7 @@ class ProjectsController < ApplicationController
     total = @project.stories.sum 'points'
     @burndown << total
 
-    5.times do
+    6.times do
       @project.stories.where(:stage_id => @stages.last).where("accepted_at > ? and accepted_at < ?", date, date + 1.day).each do |story|
         total -= story.points || 0
       end

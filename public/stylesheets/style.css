@@ -11,3 +11,8 @@ body {
 .btn.large {
   width: 220px;
 }
+
+.points {
+  line-height: 0;
+  margin-top: 16px;
+}
