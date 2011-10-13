@@ -17,8 +17,8 @@ class Board < ActiveRecord::Base
           existing_project.import_stories
         else
           p "    no project found"
-          new_project = Project.create(:name => project.name, :pivotal_id => project.id, :board_id => self)
-          p "    new project created: #{new_project.id} #{new_project.name}"
+          new_project = Project.create(:name => project.name, :pivotal_id => project.id, :board_id => self.id)
+          p "    new project created: #{new_project.id} #{new_project.name} for board #{self.id}"
         end
       end
     end
