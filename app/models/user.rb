@@ -5,11 +5,22 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :invite_code
 
-  has_one :board
+  has_one     :board
 
-  after_create  :create_board
+  before_validation :invited?
+  after_create      :create_board
+
+  def admin?
+    role == 'admin'
+  end
+
+  def invited?
+    if invite_code.blank? || !InviteCode.exists?(:code => invite_code)
+      errors.add :invite_code, "doesn't exist"
+    end
+  end
 
 private
 

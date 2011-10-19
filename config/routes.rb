@@ -1,4 +1,6 @@
 Agileboard::Application.routes.draw do
+  resources :invite_codes
+
   devise_for :users
 
   resources :boards, :except => ['edit', 'show', 'update', 'destroy']

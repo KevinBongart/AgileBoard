@@ -10,13 +10,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111013205242) do
+ActiveRecord::Schema.define(:version => 20111019181036) do
 
   create_table "boards", :force => true do |t|
     t.string   "token"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+  end
+
+  create_table "invite_codes", :force => true do |t|
+    t.string   "code"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "labels", :force => true do |t|
@@ -80,6 +86,8 @@ ActiveRecord::Schema.define(:version => 20111013205242) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "role"
+    t.string   "invite_code"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

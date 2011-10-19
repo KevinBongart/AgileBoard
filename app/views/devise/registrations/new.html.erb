@@ -28,6 +28,13 @@
       </div>
     </div>
 
+    <div class="clearfix">
+      <%= f.label :invite_code %>
+      <div class="input">
+        <%= f.text_field :invite_code %>
+      </div>
+    </div>
+
     <% if devise_mapping.rememberable? -%>
       <div class="input clearfix">
         <%= f.check_box :remember_me %>
