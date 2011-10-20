@@ -19,7 +19,8 @@ class ProjectsController < ApplicationController
     # Compute points burnt down during the week
     date = Time.zone.now.beginning_of_week + 10.5.hours
     @burndown = []
-    total = @project.stories.sum 'points'
+    total = 0
+    @project.stories.map(&:points).each {|p| total += p if p && p > 0}
     @burndown << total
 
     while date < Time.zone.now.end_of_day do
