@@ -1,4 +1,4 @@
-AgileBoard is a Rails app that helps agile teams getting organized by offering a clearer view of your current sprint:
+AgileBoard is a Rails app that gives teams a clear view of their current Pivotal Tracker sprint:
 
 ![Screenshot](http://f.cl.ly/items/1p0r200y2h280X0f3t3r/Screen%20Shot%202012-11-07%20at%201.17.37%20PM.png)
 
